@@ -1,0 +1,6 @@
+{
+  "name": "IronHaul Logistics",
+  "description": "America's premier freight and trucking company, offering FTL, LTL, refrigerated, heavy haul, and expedited logistics with trusted coast-to-coast delivery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
