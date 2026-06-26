@@ -26,7 +26,8 @@ import {
   Twitter, 
   Instagram,
   XSquare,
-  Sparkles
+  Sparkles,
+  Clock
 } from 'lucide-react';
 
 // Interfaces for structured data
@@ -509,31 +510,36 @@ export default function App() {
     <div className="relative min-h-screen bg-slate-50 text-brand-dark flex flex-col selection:bg-brand-accent/20 selection:text-brand-dark">
       
       {/* ====== HEADER / NAVIGATION ====== */}
-      <header className="fixed top-0 left-0 w-full z-50 bg-brand-dark/95 backdrop-blur-md border-b border-white/10 transition-all duration-300">
+      <header className="fixed top-0 left-0 w-full z-50 bg-[#030914]/80 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-20">
           {/* Logo element with semantic anchor */}
           <a href="#home" className="flex items-center gap-3 text-white no-underline group focus-visible:ring-2 focus-visible:ring-brand-accent rounded p-1" aria-label="IronHaul Homepage">
-            <Truck className="text-brand-accent w-7 h-7 sm:w-8 sm:h-8 transition-transform duration-300 group-hover:scale-115" />
+            <Truck className="text-amber-500 w-7 h-7 sm:w-8 sm:h-8 transition-transform duration-300 group-hover:scale-110" />
             <span className="font-display text-xl sm:text-2xl font-bold tracking-tight">
-              Iron<span className="text-brand-accent">Haul</span>
+              Iron<span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-500">Haul</span>
             </span>
           </a>
 
           {/* Desktop Nav Links - Fully Semantic */}
-          <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium text-white/90" aria-label="Main Navigation">
-            <a href="#home" className="hover:text-brand-accent transition-colors relative py-1 focus-visible:ring-2 focus-visible:ring-brand-accent rounded">Home</a>
-            <a href="#services" className="hover:text-brand-accent transition-colors relative py-1 focus-visible:ring-2 focus-visible:ring-brand-accent rounded">Services</a>
-            <a href="#fleet" className="hover:text-brand-accent transition-colors relative py-1 focus-visible:ring-2 focus-visible:ring-brand-accent rounded">Fleet</a>
-            <a href="#about" className="hover:text-brand-accent transition-colors relative py-1 focus-visible:ring-2 focus-visible:ring-brand-accent rounded">About</a>
-            <a href="#testimonials" className="hover:text-brand-accent transition-colors relative py-1 focus-visible:ring-2 focus-visible:ring-brand-accent rounded">Testimonials</a>
-            <a href="#contact" className="hover:text-brand-accent transition-colors relative py-1 focus-visible:ring-2 focus-visible:ring-brand-accent rounded">Contact</a>
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium text-white/80" aria-label="Main Navigation">
+            <a href="#home" className="hover:text-amber-400 transition-colors relative py-1 focus-visible:ring-2 focus-visible:ring-amber-400 rounded">Home</a>
+            <a href="#services" className="hover:text-amber-400 transition-colors relative py-1 focus-visible:ring-2 focus-visible:ring-amber-400 rounded">Services</a>
+            <a href="#fleet" className="hover:text-amber-400 transition-colors relative py-1 focus-visible:ring-2 focus-visible:ring-amber-400 rounded">Fleet</a>
+            <a href="#about" className="hover:text-amber-400 transition-colors relative py-1 focus-visible:ring-2 focus-visible:ring-amber-400 rounded">About</a>
+            <a href="#testimonials" className="hover:text-amber-400 transition-colors relative py-1 focus-visible:ring-2 focus-visible:ring-amber-400 rounded">Testimonials</a>
+            <a href="#contact" className="hover:text-amber-400 transition-colors relative py-1 focus-visible:ring-2 focus-visible:ring-amber-400 rounded">Contact</a>
           </nav>
 
           {/* Header CTA + Mobile toggle */}
           <div className="flex items-center gap-3">
+            {/* Speed Badge similar to the image's top-right pill */}
+            <div className="hidden lg:flex items-center gap-1.5 bg-[#030914]/90 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 shadow-[0_0_15px_rgba(245,158,11,0.15)] text-xs font-semibold tracking-wider text-white select-none">
+              <span className="text-amber-400 font-bold animate-pulse">⚡</span> Speed: <span className="text-amber-400 font-bold font-mono">100/100</span>
+            </div>
+
             <a 
               href="#contact" 
-              className="hidden sm:inline-flex items-center gap-2 bg-brand-accent hover:bg-brand-accent-light text-brand-dark font-semibold text-xs sm:text-sm py-2 px-4 rounded-full transition-all duration-300 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-brand-accent"
+              className="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs sm:text-sm py-2 px-5 rounded-full transition-all duration-300 hover:shadow-[0_4px_15px_rgba(245,158,11,0.25)] focus-visible:ring-2 focus-visible:ring-amber-400"
               aria-label="Navigate to contact to request a Quote"
             >
               <Phone className="w-4 h-4" /> Get a Quote
@@ -543,7 +549,7 @@ export default function App() {
             <button 
               ref={menuBtnRef}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
-              className="md:hidden text-white hover:text-brand-accent transition p-2 focus-visible:ring-2 focus-visible:ring-brand-accent rounded-lg"
+              className="md:hidden text-white hover:text-amber-400 transition p-2 focus-visible:ring-2 focus-visible:ring-amber-400 rounded-lg"
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-nav-panel"
               aria-label={mobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
@@ -558,7 +564,7 @@ export default function App() {
         <div 
           ref={mobileMenuRef}
           id="mobile-nav-panel"
-          className={`md:hidden absolute top-full left-0 w-full bg-brand-dark/95 border-b border-white/10 transition-all duration-300 ease-in-out origin-top ${
+          className={`md:hidden absolute top-full left-0 w-full bg-[#030914]/95 border-b border-white/5 transition-all duration-300 ease-in-out origin-top ${
             mobileMenuOpen ? 'max-h-96 opacity-100 scale-y-100 py-4' : 'max-h-0 opacity-0 scale-y-0 overflow-hidden pointer-events-none'
           }`}
         >
@@ -566,49 +572,49 @@ export default function App() {
             <a 
               href="#home" 
               onClick={() => setMobileMenuOpen(false)} 
-              className="block py-2 text-white/90 hover:text-brand-accent font-medium text-base rounded hover:bg-white/5 px-2 transition-colors"
+              className="block py-2 text-white/90 hover:text-amber-400 font-medium text-base rounded hover:bg-white/5 px-2 transition-colors"
             >
               Home
             </a>
             <a 
               href="#services" 
               onClick={() => setMobileMenuOpen(false)} 
-              className="block py-2 text-white/90 hover:text-brand-accent font-medium text-base rounded hover:bg-white/5 px-2 transition-colors"
+              className="block py-2 text-white/90 hover:text-amber-400 font-medium text-base rounded hover:bg-white/5 px-2 transition-colors"
             >
               Services
             </a>
             <a 
               href="#fleet" 
               onClick={() => setMobileMenuOpen(false)} 
-              className="block py-2 text-white/90 hover:text-brand-accent font-medium text-base rounded hover:bg-white/5 px-2 transition-colors"
+              className="block py-2 text-white/90 hover:text-amber-400 font-medium text-base rounded hover:bg-white/5 px-2 transition-colors"
             >
               Fleet
             </a>
             <a 
               href="#about" 
               onClick={() => setMobileMenuOpen(false)} 
-              className="block py-2 text-white/90 hover:text-brand-accent font-medium text-base rounded hover:bg-white/5 px-2 transition-colors"
+              className="block py-2 text-white/90 hover:text-amber-400 font-medium text-base rounded hover:bg-white/5 px-2 transition-colors"
             >
               About
             </a>
             <a 
               href="#testimonials" 
               onClick={() => setMobileMenuOpen(false)} 
-              className="block py-2 text-white/90 hover:text-brand-accent font-medium text-base rounded hover:bg-white/5 px-2 transition-colors"
+              className="block py-2 text-white/90 hover:text-amber-400 font-medium text-base rounded hover:bg-white/5 px-2 transition-colors"
             >
               Testimonials
             </a>
             <a 
               href="#contact" 
               onClick={() => setMobileMenuOpen(false)} 
-              className="block py-2 text-white/90 hover:text-brand-accent font-medium text-base rounded hover:bg-white/5 px-2 transition-colors"
+              className="block py-2 text-white/90 hover:text-amber-400 font-medium text-base rounded hover:bg-white/5 px-2 transition-colors"
             >
               Contact
             </a>
             <a 
               href="#contact" 
               onClick={() => setMobileMenuOpen(false)} 
-              className="flex items-center justify-center gap-2 bg-brand-accent hover:bg-brand-accent-light text-brand-dark font-semibold py-2.5 px-4 rounded-xl text-center mt-3 text-sm transition-all"
+              className="flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-semibold py-2.5 px-4 rounded-xl text-center mt-3 text-sm transition-all shadow-[0_4px_15px_rgba(245,158,11,0.2)]"
             >
               <Phone className="w-4 h-4" /> Get a Quote
             </a>
@@ -616,65 +622,147 @@ export default function App() {
         </div>
       </header>
 
-      {/* ====== HERO BRYCE ====== */}
+      {/* ====== HERO ====== */}
       <section 
         id="home" 
-        className="relative min-h-[90vh] lg:min-h-screen flex items-center pt-20 bg-brand-dark overflow-hidden"
+        className="relative min-h-screen flex items-center pt-24 pb-16 bg-gradient-to-b from-[#030914] via-[#081527] to-[#040c19] overflow-hidden"
         aria-labelledby="hero-heading"
       >
-        {/* Background Image with fallback overlay color */}
-        <div className="absolute inset-0 bg-brand-dark">
+        {/* Ambient Backlight Glow effects representing digital/premium corporate look */}
+        <div className="absolute right-[-10%] top-[10%] w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[130px] pointer-events-none animate-pulse duration-[8000ms]"></div>
+        <div className="absolute left-[-5%] bottom-[-5%] w-[400px] h-[400px] bg-amber-600/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+        {/* High-fidelity background image integrated seamlessly using elegant gradient masks */}
+        <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2070&auto=format&fit=crop" 
             alt="IronHaul transport semi-truck traversing country highway under open sky" 
-            className="w-full h-full object-cover opacity-35 filter contrast-125"
+            className="w-full h-full object-cover opacity-[0.22] filter contrast-125 saturate-75 mix-blend-luminosity"
           />
+          {/* Subtle warm overlay to bridge the truck road & deep navy base */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#040c19] via-[#081527]/90 to-[#030914]/95"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#030914] via-transparent to-[#030914]/80"></div>
         </div>
-        
-        {/* Elegant backdrop gradient styling */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-brand-dark via-brand-dark/95 to-transparent"></div>
-        
-        {/* Subtle grid pattern for texture overlay */}
-        <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#fbbf24_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12 md:py-20 lg:py-32">
-          <div className="max-w-3xl space-y-6">
-            <span className="inline-flex items-center gap-2 bg-brand-accent/20 text-brand-accent text-xs sm:text-sm font-semibold px-4 py-1.5 rounded-full border border-brand-accent/35">
-              <Sparkles className="w-4 h-4" /> America's Premier Freight Carrier
-            </span>
+        {/* Dynamic mesh grid line texture for modern web-agency flair */}
+        <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12 md:py-20 lg:py-28">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
             
-            <h1 
-              id="hero-heading" 
-              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-none"
-            >
-              Hauling the Nation <br />
-              <span className="text-brand-accent">with Grit &amp; Grace</span>
-            </h1>
-            
-            <p className="text-slate-300 text-base sm:text-lg md:text-xl max-w-xl leading-relaxed">
-              From coast to coast, IronHaul Logistics delivers your contract freight safely, on time, and with fully integrated live dispatch telemetry. We move your cargo with absolute trust.
-            </p>
-            
-            <div className="flex flex-wrap gap-4 pt-4">
-              <a 
-                href="#contact" 
-                className="inline-flex items-center gap-2 bg-brand-accent hover:bg-brand-accent-light text-brand-dark font-bold text-base py-3 px-6 sm:px-8 rounded-full transition-all duration-300 hover:shadow-xl focus-visible:ring-2 focus-visible:ring-brand-accent hover:scale-[1.02] transform"
+            {/* Left Content Column */}
+            <div className="lg:col-span-7 space-y-6 md:space-y-8 text-left">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500/10 to-amber-500/20 text-amber-400 text-xs sm:text-sm font-semibold px-4.5 py-2 rounded-full border border-amber-500/30 backdrop-blur-md shadow-[0_4px_20px_rgba(245,158,11,0.05)]">
+                <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-pulse" /> 
+                <span className="uppercase tracking-wider">America's Premier Freight Carrier</span>
+              </div>
+              
+              <h1 
+                id="hero-heading" 
+                className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white tracking-tight leading-[1.08]"
               >
-                Request a Quote <ArrowRight className="w-4 h-4" />
-              </a>
-              <a 
-                href="#services" 
-                className="inline-flex items-center gap-2 bg-transparent text-white border-2 border-white/60 hover:bg-white hover:text-brand-dark font-semibold text-base py-3 px-6 sm:px-8 rounded-full transition-all duration-300 focus-visible:ring-2 focus-visible:ring-white"
-              >
-                Explore Services
-              </a>
+                Hauling the Nation <br />
+                <span className="font-serif italic font-medium text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-100 to-amber-500 block mt-2">
+                  with Grit &amp; Grace
+                </span>
+              </h1>
+              
+              <p className="text-slate-300/95 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed font-sans">
+                Your Premier Partner for Reliable, Nationwide Freight Transport, Specialized Flatbed, and Heavy Haul Solutions. Moving your cargo with absolute trust.
+              </p>
+              
+              {/* Premium Interactive Action Buttons */}
+              <div className="flex flex-wrap gap-4 sm:gap-5 pt-2">
+                <a 
+                  href="#contact" 
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-sm sm:text-base py-3.5 px-8 rounded-full transition-all duration-300 shadow-[0_4px_25px_rgba(245,158,11,0.25)] hover:shadow-[0_4px_35px_rgba(245,158,11,0.45)] hover:scale-[1.02] active:scale-[0.98] transform"
+                >
+                  REQUEST A FREE QUOTE <ArrowRight className="w-4 h-4 text-slate-950 stroke-[2.5]" />
+                </a>
+                <a 
+                  href="#services" 
+                  className="inline-flex items-center gap-2 bg-white/5 text-white border border-white/10 hover:border-amber-500/30 hover:bg-white/[0.08] font-semibold text-sm sm:text-base py-3.5 px-8 rounded-full transition-all duration-300 backdrop-blur-sm focus-visible:ring-2 focus-visible:ring-white active:scale-[0.98] transform"
+                >
+                  EXPLORE SERVICES
+                </a>
+              </div>
             </div>
+
+            {/* Right Interactive / Presentation Column adapted for luxury look */}
+            <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
+              {/* Decorative radial blur for depth behind floating card */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/10 to-blue-500/10 rounded-3xl blur-[80px] opacity-40 pointer-events-none"></div>
+              
+              {/* Fully functional premium interactive live stats display to give that "Agency bespoke" feel */}
+              <div className="relative w-full max-w-md bg-gradient-to-b from-white/[0.07] to-white/[0.02] backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 shadow-[0_20px_50px_rgba(3,8,19,0.5)] space-y-6 hover:border-white/15 transition-all duration-500">
+                <div className="flex items-center justify-between border-b border-white/10 pb-4">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></div>
+                    <span className="text-xs font-bold uppercase tracking-widest text-slate-300">Live Telemetry active</span>
+                  </div>
+                  <span className="text-xs font-mono text-amber-400">ID: IH-709</span>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="space-y-1">
+                    <div className="flex justify-between text-xs font-medium text-slate-400">
+                      <span>On-Time Dispatch Rate</span>
+                      <span className="text-white font-bold font-mono">98.6%</span>
+                    </div>
+                    <div className="w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
+                      <div className="bg-gradient-to-r from-amber-500 to-amber-400 h-full rounded-full" style={{ width: '98.6%' }}></div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-1">
+                    <div className="flex justify-between text-xs font-medium text-slate-400">
+                      <span>Fleet Utilization</span>
+                      <span className="text-white font-bold font-mono">94.2%</span>
+                    </div>
+                    <div className="w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
+                      <div className="bg-gradient-to-r from-amber-500 to-amber-400 h-full rounded-full" style={{ width: '94.2%' }}></div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-1">
+                    <div className="flex justify-between text-xs font-medium text-slate-400">
+                      <span>Customer satisfaction score</span>
+                      <span className="text-white font-bold font-mono">4.9 / 5.0</span>
+                    </div>
+                    <div className="w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
+                      <div className="bg-gradient-to-r from-amber-500 to-amber-400 h-full rounded-full" style={{ width: '98%' }}></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-white/10 grid grid-cols-2 gap-4">
+                  <div className="text-left">
+                    <span className="block text-[10px] uppercase tracking-wider text-slate-400 font-bold">Transit Coverage</span>
+                    <span className="text-xl font-bold text-white font-mono mt-0.5 block">48 States</span>
+                  </div>
+                  <div className="text-left">
+                    <span className="block text-[10px] uppercase tracking-wider text-slate-400 font-bold">Active Cargo Vehicles</span>
+                    <span className="text-xl font-bold text-white font-mono mt-0.5 block">140+ Trucks</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 bg-white/5 p-3.5 rounded-xl border border-white/5 text-xs text-slate-300">
+                  <div className="p-1.5 rounded-lg bg-amber-500/10 text-amber-400 leading-none shrink-0">
+                    <Clock className="w-4 h-4" />
+                  </div>
+                  <p className="leading-normal">
+                    Interactive dispatch estimators and load rates compute dynamically below.
+                  </p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
         {/* Floating scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 animate-bounce text-2xl z-10 hidden sm:block pointer-events-none">
-          <ChevronDown className="w-6 h-6 mx-auto text-brand-accent" />
+          <ChevronDown className="w-6 h-6 mx-auto text-amber-400" />
         </div>
       </section>
 
